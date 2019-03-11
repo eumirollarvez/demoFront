@@ -1,0 +1,30 @@
+<h1>Lista de articulos sobre Nodejs</h1>
+<mat-table class="articulos-table mat-elevation-z8" [dataSource]="articulos">
+
+    <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+        <mat-cell class="title-cell"
+                  *matCellDef="let articulo">{{ articulo.title }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="author">
+        <mat-header-cell *matHeaderCellDef>Author</mat-header-cell>
+        <mat-cell class="author-cell"
+                  *matCellDef="let articulo">{{ articulo.author }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="created_at">
+        <mat-header-cell *matHeaderCellDef>Created At</mat-header-cell>
+        <mat-cell class="created_at-cell"
+                  *matCellDef="let articulo">{{ (articulo.created_at | amTimeAgo) }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+        <mat-cell class="action-cell"
+                  *matCellDef="let articulo"><a (click)="delete(articulo.id)"><i class="material-icons">delete_forever</i></a></mat-cell>
+    </ng-container>
+    
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
